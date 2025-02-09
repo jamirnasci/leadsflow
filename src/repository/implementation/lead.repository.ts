@@ -1,12 +1,13 @@
 import { QueryError } from "mysql2"
-import { db } from "../config/dbconfig"
-import Lead from "../model/Lead"
+import { db } from "../../config/dbconfig"
+import Lead from "../../entities/lead.entity"
+import { ILeadRepository } from "../interfaces/lead.interface"
 
-export class LeadService{
+export class LeadRepository implements ILeadRepository {
   findAll(): Promise<Lead[] | undefined>{
     const sql = "SELECT * FROM Leads"
     return new Promise<Lead[] | undefined>((res, rej)=>{
-      db.query(sql, (err: QueryError, data: Lead[] | undefined)=>{
+      db.query(sql, (err: QueryError | null, data: Lead[] | undefined)=>{
         if(err){
           console.log(err)
           rej(err)

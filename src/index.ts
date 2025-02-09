@@ -1,10 +1,10 @@
 import bodyParser from 'body-parser'
 import express, {Express, Request, Response} from 'express'
 import cookieParser from 'cookie-parser'
-import {login, logout} from '../controller/LoginController'
+import {login, logout} from './controller/login.controller'
 import dotenv from 'dotenv'
-import { createLead, deleteLead, getAllLeads, updateLead } from '../controller/LeadController'
-import { verifyToken } from '../middlewares/VerifyToken'
+import { createLead, deleteLead, getAllLeads, updateLead } from './controller/lead.controller'
+import { verifyToken } from './middlewares/VerifyToken'
 
 dotenv.config()
 

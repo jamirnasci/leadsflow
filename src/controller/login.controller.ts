@@ -1,6 +1,6 @@
 import { Response, Request } from "express"
-import { UsuarioService } from "../services/UsuarioService"
-import Usuario from "../model/Usuario"
+import { UsuarioService } from "../services/usuario.service"
+import Usuario from "../entities/usuario.entity"
 import jwt from 'jsonwebtoken'
 
 const us: UsuarioService = new UsuarioService()
