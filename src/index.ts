@@ -5,6 +5,7 @@ import {login, logout} from './controller/login.controller'
 import dotenv from 'dotenv'
 import { createLead, deleteLead, getAllLeads, updateLead } from './controller/lead.controller'
 import { verifyToken } from './middlewares/VerifyToken'
+import router from './routes/router'
 
 dotenv.config()
 
@@ -14,11 +15,6 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 app.use(cookieParser())
 
-app.post('/login', login)
-app.post('/leads', verifyToken, getAllLeads)
-app.post('/createLead', verifyToken, createLead)
-app.post('/deleteLead', verifyToken, deleteLead)
-app.post('/updateLead', verifyToken, updateLead)
-app.get('/logout', verifyToken, logout)
+app.use('/api', router)
 
 app.listen(PORT, _ => console.log(`server on ${PORT}`))
